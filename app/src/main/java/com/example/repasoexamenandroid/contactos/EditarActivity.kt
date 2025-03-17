@@ -53,7 +53,7 @@ class EditarActivity : AppCompatActivity() {
                 resultIntent.putExtra("nuevo_telefono", nuevoTelefono)
                 resultIntent.putExtra("nuevo_email", nuevoEmail)
                 setResult(Activity.RESULT_OK, resultIntent)
-                finish()
+                finish() // Volvemos a MainActivity
             }
         }
     }

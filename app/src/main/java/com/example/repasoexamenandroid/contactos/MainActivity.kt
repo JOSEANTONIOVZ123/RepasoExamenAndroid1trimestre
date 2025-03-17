@@ -1,5 +1,8 @@
 package com.example.repasoexamenandroid.contactos
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -36,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             swipeRefreshLayout.isRefreshing = false
         }
 
+
         cargarContactos()
     }
 
@@ -64,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun recargarLista() {
         cargarContactos()
         contactoAdapter.notifyDataSetChanged()
@@ -79,9 +84,20 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun limpiarLista() {
         contactos.clear()
         contactoAdapter.notifyDataSetChanged()
         Toast.makeText(this, "Lista vaciada", Toast.LENGTH_SHORT).show()
     }
+
+    override fun onResume() {
+        super.onResume()
+        recargarLista() // Fuerza la actualización cuando volvemos a MainActivity
+    }
+
+
+
+
+
 }
